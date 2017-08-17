@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "events#index"
     resources :events
-    resources :cetegores
   end
 
   get "/faq" => "pages#faq"
