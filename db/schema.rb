@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816142620) do
+ActiveRecord::Schema.define(version: 20170816142621) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20170816142620) do
     t.datetime "updated_at",                    null: false
     t.string   "friendly_id"
     t.string   "status",      default: "draft"
+    t.integer  "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["friendly_id"], name: "index_events_on_friendly_id", unique: true
   end
 
