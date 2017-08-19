@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <%= f.label :group_ids %>
-    <%= f.select :group_ids, Group.all.map{ |g| [g.name, g.id]}, {},:multiple => true, :class => "form-control" %>
+    <%= f.select :group_ids, Group.all.map{ |g| [g.name, g.id] }, {}, :multiple => true, :class => "form-control" %>
   </div>
 
   <% end %>
