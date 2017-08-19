@@ -7,6 +7,7 @@
     <%= f.time_zone_select :time_zone %>
   </div>
 
+  <%= f.fields_for :profile do |ff| %>
   <div class="form-group">
     <%= ff.label :birthday %>
     <%= ff.date_field :birthday, :class => "form-control" %>
@@ -36,6 +37,7 @@
     <%= ff.label :specialty %>
     <%= ff.text_area :specialty, :class => "form-control" %>
   </div>
+  <% end %>
 
   <div class="form-group">
     <%= f.submit "Save", :class => "btn btn-primary" %>
