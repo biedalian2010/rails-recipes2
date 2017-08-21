@@ -2,6 +2,14 @@
 
 <h2>Step 3 </h2>
 
+<!-- <% if @registration.errors[:base].any? %>
+  <ul>
+  <% @registration.errors[:base].each do |error| %>
+    <li><%= error %></li>
+  <% end %>
+  </ul>
+<% end %> -->
+
 <% if @registration.errors.any? %>
 <ul>
   <% @registration.errors.full_messages.each do |error| %>
