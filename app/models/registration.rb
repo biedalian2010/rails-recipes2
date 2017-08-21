@@ -5,7 +5,7 @@ class Registration < ApplicationRecord
   validates_presence_of :status, :ticket_id
 
   attr_accessor :current_step
-  validates_presence_of :name, :email, :cellohone, :if => :should_validate_basic_data?
+  validates_presence_of :name, :email, :cellphone, :if => :should_validate_basic_data?
   validates_presence_of :name, :email, :cellphone, :bio, :if => :should_validate_all_data?
 
   belongs_to :event
@@ -29,6 +29,6 @@ class Registration < ApplicationRecord
   end
 
   def should_validate_all_data?
-    current_step == 3 || status == "confirmed"  #做到第三部,或最后状态是 confirmed 是需要验证 
+    current_step == 3 || status == "confirmed"  #做到第三部,或最后状态是 confirmed 是需要验证
   end
 end
