@@ -12,7 +12,16 @@ class Admin::EventRegistrationsController < ApplicationController
     if params[:ticket_id].present?
       @registrations = @registrations.by_ticket(params[:ticket_id])
     end
+
+    if Array(params[:statuses]).any?
+      @registrations = @registrations.by_status(params[:statuses])
+    end
+
+    if Array(params[:ticket_ids]).any?
+      @registrations = @registrations.by_ticket(params[:ticket_ids])
+    end
   end
+
 
   def destroy
     @registration = @event.registrations.find_by_uuid(params[:id])
