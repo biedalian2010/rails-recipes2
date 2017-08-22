@@ -13,4 +13,4 @@
   registration:
     status:
       pending: 报名尚未完成
-      confirm: 报名成功
+      confirmed: 报名成功
