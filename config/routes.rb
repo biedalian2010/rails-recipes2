@@ -26,7 +26,9 @@ Rails.application.routes.draw do
             end
            collection do
              post :bulk_update
-      end
+           end
+      resources :registrations, :controller => "event_registrations"
+      
     end
     resources :users do
       resource :profile, :controller => "user_profiles"
