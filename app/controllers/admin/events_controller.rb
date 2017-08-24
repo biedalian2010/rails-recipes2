@@ -11,6 +11,7 @@ class Admin::EventsController < AdminController
   def new
     @event = Event.new
     @event.tickets.build
+    @event.attachments.build
   end
 
   def create
@@ -26,7 +27,7 @@ class Admin::EventsController < AdminController
   def edit
     @event = Event.find_by_friendly_id(params[:id])
     @event.tickets.build if @event.tickets.empty?
-
+    @event.attachments.build if @event.attachments.empty?
   end
 
   def update
@@ -78,9 +79,9 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit(:name, :logo, :remove_logo, :description,
-                                  :friendly_id, :status, :category_id, :remove_images,  :images => [], 
-                                  :tickets_attributes => [:id, :name, :description,
-                                                          :price, :destroy])
+                                  :friendly_id, :status, :category_id, :remove_images,  :images => [],
+                                  :tickets_attributes => [:id, :name, :description,:price, :destroy],
+                                  :attachments_attributes => [:id, :attachment, :description, :_destroy])
   end
 
 end
