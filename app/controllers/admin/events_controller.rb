@@ -78,7 +78,7 @@ class Admin::EventsController < AdminController
 
   def event_params
     params.require(:event).permit(:name, :logo, :remove_logo, :description,
-                                  :friendly_id, :status, :category_id,
+                                  :friendly_id, :status, :category_id, :remove_images,  :images => [], 
                                   :tickets_attributes => [:id, :name, :description,
                                                           :price, :destroy])
   end
