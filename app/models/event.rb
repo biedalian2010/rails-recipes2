@@ -1,8 +1,10 @@
 class Event < ApplicationRecord
 
+  mount_uploader :logo, EventLogoUploader
+
   scope :only_public, -> { where( :status => "public" ) }
   scope :only_available, -> { where( :status => ["public", "private"] ) }
-  
+
   STATUS = ["draft","public","private"]
   validates_inclusion_of :status, :in => STATUS
   validates_presence_of :name, :friendly_id
