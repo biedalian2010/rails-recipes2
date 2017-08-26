@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.only_available.find_by_friendly_id!(params[:id]) #如果活动是 draft的话,经过only_available scope 就会找不到,这就是我们的目的
+    @event = Event.only_available.find_by_friendly_id!(params[:id]) #如果活动是 draft的话,经过only_available scope 就会找不到,这就是我们的目的  
   end
 
 end
