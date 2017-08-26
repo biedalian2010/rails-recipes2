@@ -4,14 +4,14 @@
     <title>RailsRecipes</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin', media: 'all', 'date-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin', 'date-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container" style="padding-top: 10px">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -24,7 +24,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li class="active"><%= link_to('活動管理', admin_events_path) %></li>
+              <li class="active"><%= link_to('活动管理', admin_events_path) %></li>
+              <li><%= link_to('用户管理', admin_users_path) %> </li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -47,10 +48,13 @@
     </nav>
 
     <div class="container">
+      <% if notice %>
+      <p class="notice alert-success"><%= notice %></p>
+      <% end %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
+      <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
       <%= yield %>
     </div>

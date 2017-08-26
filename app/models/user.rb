@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  has_many :memberships
+  has_many :groups, :through => :memberships
+  has_many :registrations
+
+  has_one :profile
+    accepts_nested_attributes_for :profile
+
+
   def display_name
     self.email.split("@").first
   end
