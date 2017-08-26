@@ -16,7 +16,7 @@ class Admin::EventsController < AdminController
               ]
     ticket_names = @event.tickets.map { |t| t.name }
 
-    status_colors = { "confirmed" = "#FF6384",
+    status_colors = { "confirmed" => "#FF6384",
                       "pending" => "#36A2EB"}
     @data1 = {
       labels: ticket_names,
@@ -38,6 +38,24 @@ class Admin::EventsController < AdminController
         borderWidth: 1
         }]
     }
+
+    if @event.registrations.any?
+      datas = (@event.registrations.order("id ASC").first.created_at.to_date..Date.today).to_a
+
+      @data3 = {
+        labels: datas,
+        datasets: Registration::STATUS.map do |s|
+          {
+            :label => I18n.t(s, :scope => "registration.status"),
+            :data => datas.map{ |d|
+              @event.registrations.by_status(s).where( "created_at >= ? AND created_at <= ?", d.beginning_of_day, d.end_of_day).count
+            },
+            borderColor: status_colors[s]
+          }
+        end
+      }
+    end
+
   end
 
   def new
